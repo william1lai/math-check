@@ -5,9 +5,7 @@
 
 using namespace std;
 
-set<string> sets;
-
-void count(string s, string left)
+void count(set<string> &sets, string s, string left)
 {
 	if (s.length() > 0)
 	{
@@ -26,15 +24,16 @@ void count(string s, string left)
 		char c = left[i];
 		left = left.substr(0, i) + left.substr(i + 1, left.length() - i - 1);
 		//cout << "LEFT: " << left << endl;
-		count(s + c, left);
+		count(sets, s + c, left);
 		left = temp;
 	}
 }
 
 int main()
 {
+	set<string> sets;
 	string s = "school";
-	count("", s);
+	count(sets, "", s);
 	cout << sets.size() << endl;
 
 	string test;
